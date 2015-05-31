@@ -1,0 +1,186 @@
+<p><a href="#/">Home</a> &#62; Custom order</p>
+<div class="custom_top">
+    <img src="img/custom.png" />
+    <ul>
+        <li>select style</li>
+        <li>select size</li>
+        <li>select frame</li>
+        <li>upload photo</li>
+        <li>checkout</li>
+    </ul>
+    <div style="clear:both"></div>
+</div>
+<div class="custom_bottom">
+    <div class="custom_style" ng-class="{true:'toggleUp'}[current!='style']">
+        <div class="title" ng-click="setCurrent('style')">Style</div>
+        <div class="custom_content">
+            <a href="javascript:void(0)" ng-click="selectStyle(style)" ng-repeat="style in styles">
+                <img ng-src="{{style.img}}" style="margin-left:32px;width:166px" />
+                <p style="text-align:center">
+                    <input type="radio" name="style" ng-checked="style == selectedStyle" /><span class="styleName">{{style.name}}</span></p>
+                <p style="padding-left:30px">${{style.price}}</p>
+            </a>
+        </div>
+    </div>
+    <div ng-class="{true:'toggleUp'}[current!='size']">
+        <div class="title" ng-click="setCurrent('size')">Size</div>
+        <div class="custom_content">
+            <span ng-repeat="size in sizes" style="display: inline-block;width: 200px; margin:10px 0">
+            	<input type="radio" name="size" ng-checked="size == selectedSize" ng-click="selectSize(size)"/><b ng-click="selectSize(size)">{{size.name}}</b>
+            	<span style="margin-left:20px;color:gray">${{size.price}}</span>
+            </span>
+        </div>
+    </div>
+    <div ng-class="{true:'toggleUp'}[current!='frame']">
+        <div class="title" ng-click="setCurrent('frame')">Frame</div>
+        <div class="custom_content">
+            <span ng-repeat="frame in frames" style="display: inline-block;width: 240px; margin:10px 0">
+            	<img ng-src="{{frame.img}}" ng-click="selectFrame(frame)" style="width:214px;height:186px"/>
+            	<p>
+	            	<input type="radio" name="frame" ng-checked="frame == selectedFrame" ng-click="selectFrame(frame)"/><b style="margin-left:10px" ng-click="selectFrame(frame)">{{frame.name}}</b>
+	            	<span style="margin-left:20px;color:gray">${{frame.price}}</span>
+            </p>
+            </span>
+        </div>
+    </div>
+    <div ng-class="{true:'toggleUp'}[current!='uploadPhoto']">
+        <div class="title" ng-click="setCurrent('uploadPhoto')">Upload Photo</div>
+        <div class="custom_content">
+            <div class="up-buttons">
+                <div ngf-select ngf-drop ng-model="files" ng-model-rejected="rejFiles" ngf-accept="accept" accept="{{acceptSelect}}" ngf-disabled="disabled" ngf-capture="capture" ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" ngf-min-size="1000" ngf-max-size="52428800" ngf-allow-dir="false" class="drop-box" ngf-drop-available="dropAvailable">Select File
+                    <span ng-show="dropAvailable">or Drop</span>
+                </div>
+            </div>
+            <div class="preview" style="float:right;padding-left:100px">
+                <p>Preview:</p>
+                <img style="max-width:300px" ngf-src="files[0]" ng-show="files[0].type.indexOf('image') > -1" ngf-accept="'image/*'">
+            </div>
+        </div>
+    </div>
+    <div ng-class="{true:'toggleUp'}[current!='checkOut']">
+        <div class="title" ng-click="setCurrent('checkOut')">Check Out</div>
+        <div class="custom_content checkout" ng-init="item ='payment'">
+            <h1 ng-click="item = item == 'ship' ? '' :'ship' ">SHIPPING ADDRESS </h1>
+            <div ng-class="{true:'hide'}[item != 'ship']" class="ship_address">
+                <form name="address" novalidate="novalidate">
+                    <p>Full Name <b class="required" ng-show="!address.firstName.$valid || !address.lastName.$valid ">*</b></p>
+                    <input type="text" name="firstName" ng-model="firstName" placeholder="First name" required/>
+                    <em ng-style="{color:address.firstName.$valid? 'green':'red'}">{{address.firstName.$valid | checkmark}}</em>
+                    <input type="text" name="lastName" ng-model="lastName" placeholder="Last name" required/>
+                    <em ng-style="{color:address.lastName.$valid? 'green':'red'}">{{address.lastName.$valid | checkmark}}</em>
+                    <p>Phone number<b class="required" ng-show="address.phone_number.$error.required">*</b></p>
+                    <input type="text" name="phone_prefix" ng-pattern="/^\d+$/" ng-model="phone_prefix" placeholder="" width="100px" />
+                    <em ng-style="{color:address.phone_prefix.$dirty && address.phone_prefix.$valid ? 'green':'red'}">
+                    	{{address.phone_prefix.$dirty && address.phone_prefix.$valid | checkmark}}
+                    </em>
+                    <input type="text" name="phone_number" ng-pattern="/^\d+$/" ng-model="phone_number" placeholder="" required/>
+                    <em ng-style="{color:address.phone_number.$dirty && address.phone_number.$valid ? 'green':'red'}">
+                    	{{address.phone_number.$dirty && address.phone_number.$valid | checkmark}}
+                    </em>
+                    <p>Email<b class="required" ng-show="!address.email.$valid">*</b></p>
+                    <input type="text" placeholder="ex: myname@example.com" name="email" ng-pattern="/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/" ng-model="email" style="width:404px" required/>
+                    <em ng-style="{color:address.email.$dirty && address.email.$valid ? 'green':'red'}">
+                    	{{address.email.$dirty && address.email.$valid | checkmark}}
+                    </em>
+                    <p>Delivery Address<b class="required" ng-show="address.address1.$error.required || address.city.$error.required || dadress.state.$error.required || address.postal.$error.required || address.country.$error.required">*</b></p>
+                    <input type="text" class="address1" name="address1" ng-model="address1" required/>
+                    <em ng-style="{color:address.address1.$dirty && address.address1.$valid ? 'green':'red'}">
+                    	{{address.address1.$dirty && address.address1.$valid | checkmark}}
+                    </em>
+                    <p class="after">Street address</p>
+                    <input type="text" class="address1" name="address2" ng-model="address2" />
+                    <p class="after">Street address line2</p>
+                    <div style="display: table;">
+                        <div style="display:table-cell;width:300px">
+                            <input type="text" style="width:200px;" name="city" ng-model="city" required/>
+                            <em ng-style="{color:address.city.$dirty && address.city.$valid ? 'green':'red'}">
+                    			{{address.city.$dirty && address.city.$valid | checkmark}}
+                    		</em>
+                            <p class="after">City</p>
+                        </div>
+                        <div style="display:table-cell">
+                            <input type="text" style="width:200px" name="state" ng-model="state" required/>
+                            <em ng-style="{color:address.state.$dirty && address.state.$valid ? 'green':'red'}">
+                    			{{address.state.$dirty && address.state.$valid | checkmark}}
+                    		</em>
+                            <p class="after">State / Province</p>
+                        </div>
+                    </div>
+                    <div style="display: table;">
+                        <div style="display:table-cell;width:300px">
+                            <input type="text" style="width:200px;" name="postal" ng-model="postal" required/>
+                            <em ng-style="{color:address.postal.$dirty && address.postal.$valid ? 'green':'red'}">
+                    			{{address.postal.$dirty && address.postal.$valid | checkmark}}
+                    		</em>
+                            <p class="after">Postal / Zip Code</p>
+                        </div>
+                        <div style="display:table-cell">
+                            <input type="text" style="width:200px" name="country" ng-model="country" required/>
+                            <em ng-style="{color:address.country.$dirty && address.country.$valid ? 'green':'red'}">
+                    			{{address.country.$dirty && address.country.$valid | checkmark}}
+                    		</em>
+                            <p class="after">Country</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <h1 ng-click="item = item =='payment' ? '' :'payment'">PAYMENT METHOD</h1>
+            <div ng-class="{true:'hide'}[item != 'payment']" class="payment_method">
+                <ul>
+                    <li>
+                        <input type="radio" value="1" ng-model="payment" name="payment" />
+                        <span ng-click="payment=1" class="payment">Use Amazon Account to Pay</span>
+                        <p style="padding-left:40px">................................or.....................................</p>
+                    </li>
+                    <li style="position:relative">
+                        <input type="radio" value="2" ng-model="payment" name="payment" />
+                        <span ng-click="payment=2" class="payment payCheck">Pay by Check</span>
+                        <b class="payCheck_after" ng-mouseenter="payCheckAddress=true" ng-mouseleave="payCheckAddress=false"><p style="margin-top:10px">A</p></b>
+                        <span ng-show="payCheckAddress" class="payCheckAddress">
+                        	<p>{{address.address1.$modelValue}}</p>
+                        	<p>{{address.address2.$modelValue}}</p>
+                        	<p>{{address.city.$modelValue}} - {{address.state.$modelValue}} - {{address.country.$modelValue}}</p>
+                        	<p>{{address.postal.$modelValue}}</p>
+                        </span>
+                    </li>
+                    <li>
+                        <input type="radio" value="3" ng-model="payment" name="payment" />
+                        <span ng-click="payment=3" class="payment">Pay by Paypal</span>
+                    </li>
+                </ul>
+                <div style="clear:both"></div>
+            </div>
+            <h1 ng-click="item = item =='preview' ? '' :'preview'">PREVIEW ITEMS AND SHIPPING</h1>
+            <div ng-class="{true:'hide'}[item != 'preview']" class="preview">
+                <div class="orderSummary">
+                    <h2>ITEMS</h2>
+                    <p>
+                        <label>Style</label><span>{{selectedStyle.name}}</span></p>
+                    <p>
+                        <label>Size</label><span>{{selectedSize.name}}</span></p>
+                    <p>
+                        <label>Frame</label><span>{{selectedFrame.name}}</span></p>
+                    <p>
+                        <label>Estimated delivery date</label><span> 8 weeks after make the order</span></p>
+                </div>
+                <div class="orderSummary">
+                    <h2>ORDER SUMMARY</h2>
+                    <p>
+                        <label>Price</label><span>${{selectedStyle.price + selectedSize.price + selectedFrame.price}}</span></p>
+                    <p>
+                        <label>Estimate Shipping</label>
+                        <span>UPS shipping $15.00</span>
+                        
+                    </p>
+                    <p>
+                        <label></label><span>[ From $15.00 depend on weight and distance ]</span>
+                    </p>
+                    <p>
+                        <label>Tax</label><span>$20.4</span></p>
+                    <p>
+                        <label>Order tatal</label><span>$235.4</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

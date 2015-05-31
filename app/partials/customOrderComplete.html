@@ -1,0 +1,33 @@
+<h1>Thnake you. your order has been placed</h1>
+<h4>An email confirmation has been sent to you</h4>
+<p>order number: {{order.num}}</p>
+<p>order summary: </p>
+<div>
+    <div class="orderSummary">
+        <h2>ITEMS</h2>
+        <p>
+            <label>Style</label><span>{{order.style}}</span></p>
+        <p>
+            <label>Size</label><span>{{order.size}}</span></p>
+        <p>
+            <label>Frame</label><span>{{order.frame}}</span></p>
+        <p>
+            <label>Estimated delivery date</label><span> 8 weeks after make the order</span></p>
+    </div>
+    <div class="orderSummary">
+        <h2>ORDER SUMMARY</h2>
+        <p>
+            <label>Price</label><span>${{order.price}}</span></p>
+        <p>
+            <label>Estimate Shipping</label>
+            <span>UPS shipping $15.00</span>
+        </p>
+        <p>
+            <label></label><span>[ From $15.00 depend on weight and distance ]</span>
+        </p>
+        <p>
+            <label>Tax</label><span>$20.4</span></p>
+        <p>
+            <label>Order tatal</label><span>$235.4</span></p>
+    </div>
+</div>

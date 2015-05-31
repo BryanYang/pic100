@@ -1,0 +1,25 @@
+[{
+    "name": "Charcoal drawing",
+    "img": "img/charcoal_drawing.png",
+    "price": 30
+}, {
+    "name": "Color pencil",
+    "img": "img/color_pencil.png",
+    "price": 50
+}, {
+    "name": "Watercolour",
+    "img": "img/water_color.png",
+    "price": 30
+}, {
+    "name": "Fountain pen",
+    "img": "img/fountain_pen.png",
+    "price": 30
+}, {
+    "name": "Ball Pen(color)",
+    "img": "img/ball_pen_color.png",
+    "price": 30
+}, {
+    "name": "Ball Pen(monochrome)",
+    "img": "img/ball_pen_monochrome.png",
+    "price": 30
+}]

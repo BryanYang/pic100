@@ -1,0 +1,50 @@
+<div class="art_top">
+    <h1>Art</h1>
+    <p>We are a hard working group, who's aim is to listen to your problems and to</p>
+    <p>come up with the best solution possible. We follow the lates trends on the web to create</p>
+    <p>custom talierd niche websites.</p>
+</div>
+<div class="art_middle">
+    <label>Style</label>
+    <select>
+        <option>Color pencli</option>
+        <option>Color pencli</option>
+        <option>Color pencli</option>
+    </select>
+    <label>Size</label>
+    <select>
+        <option>Color pencli</option>
+        <option>Color pencli</option>
+        <option>Color pencli</option>
+    </select>
+    <label>Price</label>
+    <select>
+        <option>Color pencli</option>
+        <option>Color pencli</option>
+        <option>Color pencli</option>
+    </select>
+</div>
+<div class="art_bottom">
+    <div class="gallery" ng-repeat="art in arts" ng-click="">
+        <a href="#/Art/{{art.id}}"><img ng-src="{{art.src}}" /></a>
+        <div class="info">
+            <h2>{{art.title}}</h2>
+            <p>{{art.tag}}</p>
+        </div>
+        <div class="info">
+            <h1>${{art.price}}</h1>
+        </div>
+    </div>
+</div>
+<ul class="pagination" ng-show="totalPage>1">
+    <li ng-show="currentPage>2" ng-class="{true:'active'}[currentPage==1]"><a href="javascript:void(0)" ng-click="currentPage=1;load()">First</a></li>
+    <li ng-class="{true:'disabled'}[currentPage==1]"><a href="javascript:void(0);" ng-click="prev()">&#60;</a></li>
+    <li ng-show="currentPage>3">...</li>
+    <li ng-repeat="page in pages" ng-class="{true:'active'}[currentPage==page]">
+        <a href="javascript:void(0);" ng-click="loadPage(page)">{{ page }}</a>
+    </li>
+    <li ng-show="currentPage< endPage -2">...</li>
+    <li ng-class="{true:'disabled'}[currentPage==totalPage]"><a href="javascript:void(0);" ng-click="next()">&#62;</a>
+    </li>
+    <li ng-show="currentPage< endPage -1" ng-class="{true:'active'}[currentPage==totalPage]"><a href="javascript:void(0)" ng-click="currentPage=totalPage;load()">Last</a></li>
+</ul>

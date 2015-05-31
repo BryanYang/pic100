@@ -1,0 +1,27 @@
+<p><a href="#/">Home</a> &#62; <a href="#/Art">Art</a> &#62; {{art.title}}</p>
+<div class="artDetail_top">
+    <div class="left">
+        <img src= "{{art.src}}"/>
+    </div>
+    <div class="right">
+    	<h1>{{art.title}}</h1>
+    	<p style="color:gray">{{art.tag}}</p>
+    	<p>${{art.price}}</p>
+    	<p>Artist : <strong>{{art.artist}}</strong></p>
+    	<p style="font-size:. 7em">{{art.description}}</p>
+    	<p>Size : <strong style="color:green">{{art.size}}</strong></p>
+    	<a href="javascript:void(0)" class="btn btn_middle btn_blue">ADD TO CART</a>
+    </div>
+</div>
+<h5>Details</h5>
+<div class="artDetail_middle">
+		<img ng-repeat="img in art.details" src="{{img}}"/>
+</div>
+<h5>Draw steps</h5> 
+<div class="artDetail_bottom">
+    <ul class="lunbo2" ng-style="{'width':art.drawSteps.length * 155}">
+        <li ng-repeat="img in art.drawSteps" ><img src="{{img}}" /></li>
+    </ul>
+</div>
+<a class="lunbo_left2" ng-click="pre()" href="javascript:void(0)">&#60;</a>
+<a class="lunbo_right2" ng-click="next()" href="javascript:void(0)">&#62;</a>

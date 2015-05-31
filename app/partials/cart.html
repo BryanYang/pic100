@@ -1,0 +1,36 @@
+<div class="cart_left">
+    <h3>Shopping to cart</h3>
+    <h4>ITEMS({{orders.length}})</h4>
+    <div class="order_list">
+        <div class="order" ng-repeat="art in orders">
+            <div class="left">
+                <img src="{{art.src}}" />
+            </div>
+            <div class="middle">
+                <h2>{{art.title}}</h2>
+                <p>{{art.tag}}</p>
+                <p>Size{{art.size}}</p>
+                <a class="btn btn_little btn_white" style="margin-right:30px">EDIT</a><a class="btn btn_little btn_white">REMOVE</a>
+            </div>
+            <div class="right">
+                <span style="color: gray;font-size: 1.5em">${{art.price}} * </span>
+                <input style="width: 40px;height: 20px;font-size: 20px;" type="number" ng-model="art.count" min="1" /> <span style="font-size: 1.5em">${{art.price*art.count}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cart_right">
+    <div>
+        <h3>SUMMARY</h3>
+    </div>
+    <div>
+        <h4>SUBTOTAL ${{400}}</h4>
+        <h4>Estimated Shipping ${{0.00}}</h4>
+    </div>
+    <div style="text-align:center">
+    	<h4>ESTIMATED TOTAL ${{400}}</h4>
+    	<a class="btn btn_little btn_red">CHECK OUT NOW<a/>
+    </div>
+
+</div>
+<div style="clear:both"></div>

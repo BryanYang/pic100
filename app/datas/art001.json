@@ -1,0 +1,13 @@
+{
+	"id":"001",
+	"src":"img/download/001.png",
+	"tag":"Color ball-pen",
+	"title":"House",
+	"price":"119",
+	"artist":"Lily",
+	"description":"we sadfh sjdhfj sdjk hfjsdh jhfjks ejh f sdjkfhd jshjsdjj dshjfh sjkhjksdhjf sjdhfj sdhjfh jdshjfhsdj hfjdsh fjshdjhjfh d ds",
+	"size":"60*80",
+	"details":["img/download/d1.png","img/download/d2.png","img/download/d3.png","img/download/d4.png"],
+	"drawSteps":["img/download/d5.png","img/download/d6.png","img/download/d7.png","img/download/d8.png","img/download/d9.png","img/download/d10.png","img/download/d11.png","img/download/d12.png",
+	"img/download/d13.png","img/download/d14.png"]
+}

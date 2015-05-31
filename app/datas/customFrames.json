@@ -1,0 +1,14 @@
+[{
+    "name": "White",
+    "img": "img/white.png",
+    "price": 30
+}, {
+    "name": "Wood",
+    "img": "img/wood.png",
+    "price": 40
+}, {
+
+    "name": "Without frame",
+    "img": "img/without.png",
+    "price": 0
+}]
